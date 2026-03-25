@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Energy Monitor Pro | Industrial IoT Platform</title>
     
-    <!-- Firebase SDK -->
+    <!-- Firebase SDK - Using CDN with fallback -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
@@ -77,19 +77,13 @@
         }
         
         @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
             10% { opacity: 0.5; }
             90% { opacity: 0.3; }
-            100% {
-                transform: translateY(-100vh) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
+            100% { transform: translateY(-100vh) translateX(100px) rotate(360deg); opacity: 0; }
         }
         
-        /* Toast Animation */
+        /* Toast Notification */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -135,7 +129,7 @@
         }
         
         .auth-card {
-            background: rgba(15, 25, 35, 0.9);
+            background: rgba(15, 25, 35, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 32px;
             padding: 48px;
@@ -175,7 +169,7 @@
         .auth-input {
             width: 100%;
             padding: 14px 18px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
             border: 1px solid rgba(46, 139, 122, 0.3);
             border-radius: 16px;
             font-size: 14px;
@@ -188,7 +182,7 @@
             outline: none;
             border-color: #2e8b7a;
             box-shadow: 0 0 0 3px rgba(46,139,122,0.2);
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.12);
         }
         
         .auth-input::placeholder {
@@ -208,24 +202,6 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-        }
-        
-        .auth-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .auth-btn:hover::before {
-            width: 300px;
-            height: 300px;
         }
         
         .auth-btn:hover {
@@ -286,7 +262,7 @@
         }
         
         .verify-card {
-            background: rgba(15, 25, 35, 0.9);
+            background: rgba(15, 25, 35, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 32px;
             padding: 48px;
@@ -326,7 +302,7 @@
         }
         
         .email-display {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             padding: 12px;
             border-radius: 12px;
             font-family: monospace;
@@ -369,10 +345,6 @@
             transition: 0.3s;
         }
         
-        .logout-verify-btn:hover {
-            color: #dc2626;
-        }
-        
         /* Dashboard Container */
         .dashboard-container {
             display: none;
@@ -380,7 +352,7 @@
         
         /* Topbar */
         .topbar {
-            background: rgba(10, 12, 21, 0.8);
+            background: rgba(10, 12, 21, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(46, 139, 122, 0.3);
             padding: 16px 32px;
@@ -418,7 +390,6 @@
         
         .topbar-icon i {
             font-size: 24px;
-            animation: pulse 2s infinite;
         }
         
         .topbar h1 {
@@ -436,10 +407,11 @@
             display: flex;
             gap: 12px;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         .stat-pill {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
             padding: 8px 16px;
             border-radius: 100px;
             font-size: 12px;
@@ -458,11 +430,11 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            animation: pulse 1.5s infinite;
         }
         
         .dot-green {
             background: #10b981;
+            animation: pulse 1.5s infinite;
         }
         
         .dot-red {
@@ -472,11 +444,11 @@
         
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+            50% { opacity: 0.6; transform: scale(1.2); }
         }
         
         .settings-btn, .logout-btn, .check-verify-btn {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
             border: 1px solid rgba(46, 139, 122, 0.3);
             padding: 8px 16px;
             border-radius: 100px;
@@ -514,7 +486,6 @@
             border-radius: 32px;
             border: 1px solid rgba(46, 139, 122, 0.3);
             margin-top: 40px;
-            animation: fadeInUp 0.6s ease;
         }
         
         .empty-state i {
@@ -560,6 +531,7 @@
             font-size: 14px;
             font-weight: 500;
             transition: all 0.3s;
+            color: #e2e8f0;
         }
         
         .facility-tab:hover {
@@ -586,10 +558,14 @@
         }
         
         .facility-count {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
             padding: 2px 8px;
             border-radius: 100px;
             font-size: 11px;
+        }
+        
+        .facility-tab.active .facility-count {
+            background: rgba(255,255,255,0.25);
         }
         
         .add-btn {
@@ -644,6 +620,7 @@
         .facility-title {
             font-size: 24px;
             font-weight: 700;
+            color: #e2e8f0;
         }
         
         .facility-meta {
@@ -695,6 +672,7 @@
             font-size: 13px;
             font-weight: 500;
             transition: 0.3s;
+            color: #e2e8f0;
         }
         
         .mfm-tab:hover {
@@ -753,16 +731,18 @@
         .mfm-name {
             font-size: 20px;
             font-weight: 700;
+            color: #e2e8f0;
         }
         
         .mfm-serial {
             font-size: 11px;
             font-family: monospace;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
             padding: 4px 10px;
             border-radius: 8px;
             margin-top: 6px;
             display: inline-block;
+            color: #94a3b8;
         }
         
         .mfm-status {
@@ -796,11 +776,10 @@
         .gauge-card {
             text-align: center;
             padding: 24px;
-            background: rgba(10, 12, 21, 0.5);
+            background: rgba(10, 12, 21, 0.6);
             border-radius: 20px;
             border: 1px solid rgba(46, 139, 122, 0.2);
             transition: 0.3s;
-            animation: fadeInUp 0.5s ease;
         }
         
         .gauge-card:hover {
@@ -841,7 +820,7 @@
         
         .phase-card {
             padding: 24px;
-            background: rgba(10, 12, 21, 0.5);
+            background: rgba(10, 12, 21, 0.6);
             border-radius: 20px;
             text-align: center;
             border: 1px solid rgba(46, 139, 122, 0.2);
@@ -862,21 +841,23 @@
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 12px;
+            color: #e2e8f0;
         }
         
         .phase-values {
             font-size: 14px;
             font-family: monospace;
             line-height: 1.8;
+            color: #94a3b8;
         }
         
-        /* Modals */
+        /* Modals - Fixed for dark theme */
         .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -888,19 +869,20 @@
         }
         
         .modal {
-            background: rgba(15, 25, 35, 0.95);
+            background: rgba(15, 25, 35, 0.98);
             backdrop-filter: blur(20px);
             border-radius: 28px;
             padding: 32px;
             width: 100%;
             max-width: 500px;
-            border: 1px solid rgba(46, 139, 122, 0.3);
+            border: 1px solid rgba(46, 139, 122, 0.4);
             animation: slideUp 0.4s ease;
         }
         
         .modal h3 {
             margin-bottom: 24px;
             font-size: 24px;
+            color: #e2e8f0;
         }
         
         .modal-fields {
@@ -924,7 +906,7 @@
         .mf input, .mf select {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
             border: 1px solid rgba(46, 139, 122, 0.3);
             border-radius: 14px;
             font-size: 14px;
@@ -935,6 +917,12 @@
         .mf input:focus, .mf select:focus {
             outline: none;
             border-color: #2e8b7a;
+            background: rgba(255,255,255,0.12);
+        }
+        
+        .mf select option {
+            background: #1a2a3a;
+            color: white;
         }
         
         .serial-hint {
@@ -1005,6 +993,13 @@
             background: rgba(255,255,255,0.05);
             border-radius: 12px;
             margin-bottom: 8px;
+            color: #e2e8f0;
+        }
+        
+        .device-serial {
+            font-family: monospace;
+            font-size: 12px;
+            color: #94a3b8;
         }
         
         /* Responsive */
@@ -1014,6 +1009,7 @@
             .phase-row { grid-template-columns: 1fr; }
             .topbar { padding: 12px 20px; }
             .auth-card { padding: 32px; margin: 20px; }
+            .facility-header { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -1181,7 +1177,7 @@
         <div class="modal-fields">
             <div class="mf">
                 <label>Email Address</label>
-                <input type="email" id="settingsEmail" readonly style="background: rgba(255,255,255,0.05);">
+                <input type="email" id="settingsEmail" readonly style="background: rgba(255,255,255,0.08); color: #e2e8f0;">
             </div>
             <div class="mf">
                 <label>Company Name</label>
@@ -1234,28 +1230,36 @@
 
 <script>
     // ============================================
-    // FIREBASE CONFIGURATION
+    // FIREBASE CONFIGURATION - FIXED
     // ============================================
     const firebaseConfig = {
         apiKey: "AIzaSyAsGMyOtl17cZuew2wANVzVdi8QHSK_phg",
         authDomain: "energymonitor-pro.firebaseapp.com",
+        databaseURL: "https://energymonitor-pro-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "energymonitor-pro",
         storageBucket: "energymonitor-pro.firebasestorage.app",
         messagingSenderId: "106821809310",
-        appId: "1:106821809310:web:212f39145b6d718c8bb78f",
-        databaseURL: "https://energymonitor-pro-default-rtdb.asia-southeast1.firebasedatabase.app"
+        appId: "1:106821809310:web:212f39145b6d718c8bb78f"
     };
     
     // Initialize Firebase
     let app, auth, database;
     
     try {
-        app = firebase.initializeApp(firebaseConfig);
+        // Check if Firebase is already initialized
+        if (typeof firebase !== 'undefined' && firebase.apps && firebase.apps.length === 0) {
+            app = firebase.initializeApp(firebaseConfig);
+        } else if (typeof firebase !== 'undefined') {
+            app = firebase.app();
+        }
         auth = firebase.auth();
         database = firebase.database();
-        console.log("✅ Firebase initialized");
+        console.log("✅ Firebase initialized successfully!");
+        console.log("✅ Auth domain:", firebaseConfig.authDomain);
+        console.log("✅ Database URL:", firebaseConfig.databaseURL);
     } catch(e) {
-        console.error("Firebase init error:", e);
+        console.error("❌ Firebase init error:", e);
+        alert("Firebase connection error. Please refresh the page.");
     }
     
     // ============================================
@@ -1263,6 +1267,7 @@
     // ============================================
     function createParticles() {
         const container = document.getElementById('particles');
+        if (!container) return;
         for (let i = 0; i < 40; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
@@ -1295,6 +1300,26 @@
     let activeFacility = null;
     let updateInterval = null;
     let currentUser = null;
+    let verificationCheckInterval = null;
+    
+    // Auto-refresh user verification status
+    function startVerificationCheck() {
+        if (verificationCheckInterval) clearInterval(verificationCheckInterval);
+        verificationCheckInterval = setInterval(async () => {
+            if (currentUser) {
+                await currentUser.reload();
+                if (currentUser.emailVerified) {
+                    if (document.getElementById('verifyContainer').style.display === 'flex') {
+                        document.getElementById('verifyContainer').style.display = 'none';
+                        await loadUserData();
+                        showDashboard();
+                        showToast('✅ Email verified! Welcome to Energy Monitor Pro!', 'success');
+                    }
+                    if (verificationCheckInterval) clearInterval(verificationCheckInterval);
+                }
+            }
+        }, 3000);
+    }
     
     // ============================================
     // AUTHENTICATION FUNCTIONS
@@ -1305,9 +1330,20 @@
             const userCredential = await auth.signInWithEmailAndPassword(email, password);
             currentUser = userCredential.user;
             document.getElementById('userEmailDisplay').textContent = currentUser.email;
-            await loadUserData();
-            showDashboard();
-            showToast('Login successful!', 'success');
+            
+            await currentUser.reload();
+            if (!currentUser.emailVerified) {
+                document.getElementById('authContainer').style.display = 'none';
+                document.getElementById('verifyContainer').style.display = 'flex';
+                document.getElementById('dashboardContainer').style.display = 'none';
+                document.getElementById('verifyEmailDisplay').textContent = currentUser.email;
+                startVerificationCheck();
+                showToast('Please verify your email. Check your inbox!', 'info');
+            } else {
+                await loadUserData();
+                showDashboard();
+                showToast('Login successful!', 'success');
+            }
         } catch (error) {
             showToast(error.message, 'error');
         }
@@ -1322,13 +1358,19 @@
             currentUser = userCredential.user;
             await currentUser.sendEmailVerification();
             await database.ref('users/' + currentUser.uid).set({
-                companyName: company, email: email, createdAt: new Date().toISOString(),
-                emailVerified: false, facilities: {}
+                companyName: company,
+                email: email,
+                createdAt: new Date().toISOString(),
+                emailVerified: false,
+                facilities: {}
             });
             document.getElementById('userEmailDisplay').textContent = currentUser.email;
             showToast('Account created! Please verify your email.', 'success');
-            await loadUserData();
-            showDashboard();
+            
+            document.getElementById('authContainer').style.display = 'none';
+            document.getElementById('verifyContainer').style.display = 'flex';
+            document.getElementById('verifyEmailDisplay').textContent = currentUser.email;
+            startVerificationCheck();
         } catch (error) {
             showToast(error.message, 'error');
         }
@@ -1384,8 +1426,10 @@
     function logout() {
         if (auth) {
             auth.signOut().then(() => {
-                currentUser = null; facilities = [];
+                currentUser = null;
+                facilities = [];
                 if (updateInterval) clearInterval(updateInterval);
+                if (verificationCheckInterval) clearInterval(verificationCheckInterval);
                 showAuthScreen();
                 showToast('Logged out successfully', 'success');
             });
@@ -1408,6 +1452,7 @@
     
     function showEmptyState() {
         const container = document.getElementById('facilityPanels');
+        if (!container) return;
         container.innerHTML = `
             <div class="empty-state">
                 <i class="fas fa-industry"></i>
@@ -1475,7 +1520,11 @@
             return false;
         }
         const id = 'mfm_' + Date.now();
-        const newMfm = { id: id, name: name, serial: serial, slaveId: slaveId || 1, type: type || 'panel', status: 'offline', data: null, registeredAt: new Date().toISOString() };
+        const newMfm = { 
+            id: id, name: name, serial: serial, slaveId: slaveId || 1, 
+            type: type || 'panel', status: 'offline', data: null, 
+            registeredAt: new Date().toISOString() 
+        };
         fac.mfms.push(newMfm);
         saveMfmToFirebase(facId, newMfm);
         renderAll();
@@ -1503,12 +1552,16 @@
         renderFacilityTabs();
         renderAllFacilityPanels();
         const totalMfms = facilities.reduce((s, f) => s + f.mfms.length, 0);
-        document.getElementById('sysSummary').innerHTML = facilities.length + ' facility' + (facilities.length === 1 ? '' : 'ies') + ' · ' + totalMfms + ' device' + (totalMfms === 1 ? '' : 's');
+        const summaryEl = document.getElementById('sysSummary');
+        if (summaryEl) {
+            summaryEl.innerHTML = facilities.length + ' facility' + (facilities.length === 1 ? '' : 'ies') + ' · ' + totalMfms + ' device' + (totalMfms === 1 ? '' : 's');
+        }
         if (facilities.length > 0 && !activeFacility) switchFacility(facilities[0].id);
     }
     
     function renderFacilityTabs() {
         const bar = document.getElementById('facilityBar');
+        if (!bar) return;
         const addBtn = document.getElementById('addFacilityBtn');
         const existingTabs = bar.querySelectorAll('.facility-tab');
         existingTabs.forEach(tab => tab.remove());
@@ -1525,12 +1578,14 @@
     
     function renderAllFacilityPanels() {
         const container = document.getElementById('facilityPanels');
+        if (!container) return;
         container.innerHTML = '';
         facilities.forEach(fac => renderFacilityPanel(fac));
     }
     
     function renderFacilityPanel(fac) {
         const container = document.getElementById('facilityPanels');
+        if (!container) return;
         const panel = document.createElement('div');
         panel.id = `panel_${fac.id}`;
         panel.className = 'facility-panel';
@@ -1659,9 +1714,11 @@
             document.getElementById('settingsEmail').value = currentUser.email;
             if (database) database.ref(`users/${currentUser.uid}/companyName`).once('value').then(snapshot => { document.getElementById('settingsCompany').value = snapshot.val() || ''; });
             const deviceList = document.getElementById('registeredDevicesList');
-            deviceList.innerHTML = '';
-            facilities.forEach(fac => { fac.mfms.forEach(mfm => { const div = document.createElement('div'); div.className = 'device-item'; div.innerHTML = `<div><strong>${mfm.name}</strong><br><span class="device-serial">${mfm.serial}</span></div><div>${fac.name}</div>`; deviceList.appendChild(div); }); });
-            if (deviceList.children.length === 0) deviceList.innerHTML = '<p style="text-align: center; color: #94a3b8;">No devices registered</p>';
+            if (deviceList) {
+                deviceList.innerHTML = '';
+                facilities.forEach(fac => { fac.mfms.forEach(mfm => { const div = document.createElement('div'); div.className = 'device-item'; div.innerHTML = `<div><strong>${mfm.name}</strong><br><span class="device-serial">${mfm.serial}</span></div><div>${fac.name}</div>`; deviceList.appendChild(div); }); });
+                if (deviceList.children.length === 0) deviceList.innerHTML = '<p style="text-align: center; color: #94a3b8;">No devices registered</p>';
+            }
         }
         document.getElementById('settingsModal').classList.add('open');
     }
@@ -1683,31 +1740,31 @@
     // ============================================
     // EVENT LISTENERS
     // ============================================
-    document.getElementById('loginBtn').addEventListener('click', () => { const email = document.getElementById('loginEmail').value; const password = document.getElementById('loginPassword').value; if (email && password) login(email, password); else showToast('Please enter email and password', 'error'); });
-    document.getElementById('signupBtn').addEventListener('click', () => { const company = document.getElementById('signupCompany').value; const email = document.getElementById('signupEmail').value; const password = document.getElementById('signupPassword').value; const confirm = document.getElementById('signupConfirm').value; if (!company || !email || !password) { showToast('Please fill all fields', 'error'); return; } if (password !== confirm) { showToast('Passwords do not match', 'error'); return; } signup(company, email, password); });
-    document.getElementById('forgotPasswordLink').addEventListener('click', showResetForm);
-    document.getElementById('resetBtn').addEventListener('click', () => { const email = document.getElementById('resetEmail').value; if (email) sendPasswordReset(email); else showToast('Please enter your email', 'error'); });
-    document.getElementById('backToLoginLink').addEventListener('click', showLoginForm);
-    document.getElementById('showSignupLink').addEventListener('click', showSignupForm);
-    document.getElementById('showLoginLink').addEventListener('click', showLoginForm);
-    document.getElementById('addFacilityBtn').addEventListener('click', openAddFacilityModal);
-    document.getElementById('closeFacilityModalBtn').addEventListener('click', closeFacilityModal);
-    document.getElementById('saveFacilityBtn').addEventListener('click', saveFacility);
-    document.getElementById('closeMfmModalBtn').addEventListener('click', closeMfmModal);
-    document.getElementById('saveMfmBtn').addEventListener('click', saveMfm);
-    document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
-    document.getElementById('closeSettingsModalBtn').addEventListener('click', closeSettingsModal);
-    document.getElementById('updateCompanyBtn').addEventListener('click', updateCompany);
-    document.getElementById('verifyEmailBtn').addEventListener('click', sendEmailVerification);
-    document.getElementById('changePasswordBtn').addEventListener('click', openPasswordModal);
-    document.getElementById('closePasswordModalBtn').addEventListener('click', closePasswordModal);
-    document.getElementById('savePasswordBtn').addEventListener('click', savePassword);
-    document.getElementById('logoutBtn').addEventListener('click', logout);
+    document.getElementById('loginBtn')?.addEventListener('click', () => { const email = document.getElementById('loginEmail').value; const password = document.getElementById('loginPassword').value; if (email && password) login(email, password); else showToast('Please enter email and password', 'error'); });
+    document.getElementById('signupBtn')?.addEventListener('click', () => { const company = document.getElementById('signupCompany').value; const email = document.getElementById('signupEmail').value; const password = document.getElementById('signupPassword').value; const confirm = document.getElementById('signupConfirm').value; if (!company || !email || !password) { showToast('Please fill all fields', 'error'); return; } if (password !== confirm) { showToast('Passwords do not match', 'error'); return; } signup(company, email, password); });
+    document.getElementById('forgotPasswordLink')?.addEventListener('click', showResetForm);
+    document.getElementById('resetBtn')?.addEventListener('click', () => { const email = document.getElementById('resetEmail').value; if (email) sendPasswordReset(email); else showToast('Please enter your email', 'error'); });
+    document.getElementById('backToLoginLink')?.addEventListener('click', showLoginForm);
+    document.getElementById('showSignupLink')?.addEventListener('click', showSignupForm);
+    document.getElementById('showLoginLink')?.addEventListener('click', showLoginForm);
+    document.getElementById('addFacilityBtn')?.addEventListener('click', openAddFacilityModal);
+    document.getElementById('closeFacilityModalBtn')?.addEventListener('click', closeFacilityModal);
+    document.getElementById('saveFacilityBtn')?.addEventListener('click', saveFacility);
+    document.getElementById('closeMfmModalBtn')?.addEventListener('click', closeMfmModal);
+    document.getElementById('saveMfmBtn')?.addEventListener('click', saveMfm);
+    document.getElementById('settingsBtn')?.addEventListener('click', openSettingsModal);
+    document.getElementById('closeSettingsModalBtn')?.addEventListener('click', closeSettingsModal);
+    document.getElementById('updateCompanyBtn')?.addEventListener('click', updateCompany);
+    document.getElementById('verifyEmailBtn')?.addEventListener('click', sendEmailVerification);
+    document.getElementById('changePasswordBtn')?.addEventListener('click', openPasswordModal);
+    document.getElementById('closePasswordModalBtn')?.addEventListener('click', closePasswordModal);
+    document.getElementById('savePasswordBtn')?.addEventListener('click', savePassword);
+    document.getElementById('logoutBtn')?.addEventListener('click', logout);
     
-    document.getElementById('checkVerificationBtn').addEventListener('click', async () => { if (currentUser) { await currentUser.reload(); if (currentUser.emailVerified) { showToast('✅ Email verified! Welcome!', 'success'); document.getElementById('verifyContainer').style.display = 'none'; await loadUserData(); showDashboard(); } else { showToast('Not verified yet. Check your email spam folder.', 'error'); } } });
-    document.getElementById('resendVerificationBtn').addEventListener('click', async () => { if (currentUser) { try { await currentUser.sendEmailVerification(); showToast('Verification email sent! Check your inbox.', 'success'); } catch (error) { showToast(error.message, 'error'); } } });
-    document.getElementById('logoutVerifyBtn').addEventListener('click', () => { auth.signOut(); showAuthScreen(); });
-    document.getElementById('checkVerifyBtn').addEventListener('click', async () => { if (currentUser) { await currentUser.reload(); if (currentUser.emailVerified) { showToast('✅ Email verified!', 'success'); document.getElementById('checkVerifyBtn').style.display = 'none'; } else { showToast('Not verified yet. Check your email.', 'error'); } } });
+    document.getElementById('checkVerificationBtn')?.addEventListener('click', async () => { if (currentUser) { await currentUser.reload(); if (currentUser.emailVerified) { showToast('✅ Email verified! Welcome!', 'success'); document.getElementById('verifyContainer').style.display = 'none'; await loadUserData(); showDashboard(); } else { showToast('Not verified yet. Check your email spam folder.', 'error'); } } });
+    document.getElementById('resendVerificationBtn')?.addEventListener('click', async () => { if (currentUser) { try { await currentUser.sendEmailVerification(); showToast('Verification email sent! Check your inbox.', 'success'); } catch (error) { showToast(error.message, 'error'); } } });
+    document.getElementById('logoutVerifyBtn')?.addEventListener('click', () => { auth.signOut(); showAuthScreen(); });
+    document.getElementById('checkVerifyBtn')?.addEventListener('click', async () => { if (currentUser) { await currentUser.reload(); if (currentUser.emailVerified) { showToast('✅ Email verified!', 'success'); document.getElementById('checkVerifyBtn').style.display = 'none'; } else { showToast('Not verified yet. Check your email.', 'error'); } } });
     
     window.deleteFacility = deleteFacility;
     window.deleteMfm = deleteMfm;
@@ -1721,21 +1778,29 @@
             if (user) {
                 currentUser = user;
                 document.getElementById('userEmailDisplay').textContent = currentUser.email;
+                await currentUser.reload();
                 if (!currentUser.emailVerified) {
                     document.getElementById('authContainer').style.display = 'none';
                     document.getElementById('verifyContainer').style.display = 'flex';
                     document.getElementById('dashboardContainer').style.display = 'none';
                     document.getElementById('verifyEmailDisplay').textContent = currentUser.email;
                     document.getElementById('checkVerifyBtn').style.display = 'inline-block';
+                    startVerificationCheck();
                 } else {
+                    if (verificationCheckInterval) clearInterval(verificationCheckInterval);
                     document.getElementById('verifyContainer').style.display = 'none';
                     document.getElementById('checkVerifyBtn').style.display = 'none';
                     await loadUserData();
                     showDashboard();
                 }
-            } else { showAuthScreen(); }
+            } else {
+                if (verificationCheckInterval) clearInterval(verificationCheckInterval);
+                showAuthScreen();
+            }
         });
-    } else { showAuthScreen(); }
+    } else {
+        showAuthScreen();
+    }
 </script>
 </body>
 </html>
